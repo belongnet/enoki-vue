@@ -1,6 +1,6 @@
 {
   "name": "@belongnet/enoki-vue",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Enoki Flow zk-login sui integration for Vue.js",
   "keywords": [
     "enoki",

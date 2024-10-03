@@ -1,12 +1,12 @@
 import {
   ref,
-  ShallowRef,
   shallowRef,
   onMounted,
   onBeforeUnmount,
   watchEffect,
+  type ShallowRef,
 } from 'vue'
-import { EnokiFlow, EnokiFlowConfig } from '@mysten/enoki'
+import { EnokiFlow, type EnokiFlowConfig } from '@mysten/enoki'
 import { useStore } from '@nanostores/vue'
 
 const enokiFlow = shallowRef<EnokiFlow | null>(null)

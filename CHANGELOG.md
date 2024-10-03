@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.0.7
+
+[compare changes](https://github.com/belongnet/enoki-vue/compare/v0.0.6...v0.0.7)
+
+### 🩹 Fixes
+
+- Pckg url ([4940c2a](https://github.com/belongnet/enoki-vue/commit/4940c2a))
+
+### ❤️ Contributors
+
+- Reslear <reslear@gmail.com>
+
 ## v0.0.6
 
 [compare changes](https://github.com/@belongnet/enoki-vue/compare/v0.0.5...v0.0.6)

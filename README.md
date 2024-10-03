@@ -1,42 +1,32 @@
-# packagename 
+# @belongnet/enoki-vue
 
+[![Version](https://img.shields.io/npm/v/@belongnet/enoki-vue)](https://www.npmjs.com/@belongnet/enoki-vue)
+[![Downloads](https://img.shields.io/npm/dt/@belongnet/enoki-vue)](https://www.npmjs.com/@belongnet/enoki-vue)
+[![install size](https://packagephobia.com/badge?p=@belongnet/enoki-vue)](https://packagephobia.com/result?p=@belongnet/enoki-vue)
+![npm bundle size](https://img.shields.io/bundlephobia/min/@belongnet/enoki-vue)
 
-> 1. find `packagename` and replace with your packagename name (in vscode in all files)
-> 
-> 1. also find `username` and replace with your name
-> 
-> 1. First commit create as tag
-> 
-> 1. for release npm set `NPM_TOKEN` on github secrets.
-> 
-> 1. and remove this line
+[publint](https://publint.dev/@belongnet/enoki-vue) |
+[arethetypeswrong](https://arethetypeswrong.github.io/?p=@belongnet/enoki-vue)
 
-[![Version](https://img.shields.io/npm/v/packagename)](https://www.npmjs.com/packagename)
-[![Downloads](https://img.shields.io/npm/dt/packagename)](https://www.npmjs.com/packagename)
-[![install size](https://packagephobia.com/badge?p=packagename)](https://packagephobia.com/result?p=packagename)
-![npm bundle size](https://img.shields.io/bundlephobia/min/packagename)
-
-
-[publint](https://publint.dev/packagename) | 
-[arethetypeswrong](https://arethetypeswrong.github.io/?p=packagename)
-
-
-Description
+[Enoki](https://docs.enoki.mystenlabs.com/) (zkLogin Sui) use hooks Vue 3, based and on [Enoki TypeScript SDK](https://docs.enoki.mystenlabs.com/ts-sdk) and inspired React integration.
 
 ## Installation
 
-You can install **packagename** using npm, yarn, or pnpm:
-
+Install dependencies:
 
 ```bash
-pnpm add packagename
+pnpm add @belongnet/enoki-vue @mysten/enoki
 ```
 
-Once installed, you can use the packagename in your project by importing it:
+Get your API key from [Enoki Portal](https://portal.enoki.mystenlabs.com/) and setup your Enoki config:
 
 ```ts
-import { } from 'packagename';
+import { useEnokiFlow } from '@belongnet/enoki-vue'
 
+// setup enoki config first
+const enokiFlow = useEnokiFlow({
+  apiKey: 'your-api',
+})
 ```
 
 Enjoy!
@@ -44,16 +34,17 @@ Enjoy!
 ## Advanced Usage
 
 ```ts
-import { } from 'packagename';
-
+import {
+  useZkLogin,
+  useZkLoginSession,
+  useAuthCallback,
+} from '@belongnet/enoki-vue'
 ```
 
-
-## Uses source links
-- 
-
 ## Related
-- 
+
+- https://github.com/MystenLabs/sui/tree/main/sdk/enoki
 
 ## License
+
 This project is licensed under the terms of the [MIT license](LICENSE).

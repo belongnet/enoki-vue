@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.0.8
+
+[compare changes](https://github.com/belongnet/enoki-vue/compare/v0.0.7...v0.0.8)
+
+### 💅 Refactors
+
+- Format and work playground ([10cbd3d](https://github.com/belongnet/enoki-vue/commit/10cbd3d))
+
+### ❤️ Contributors
+
+- Reslear <reslear@gmail.com>
+
 ## v0.0.7
 
 [compare changes](https://github.com/belongnet/enoki-vue/compare/v0.0.6...v0.0.7)

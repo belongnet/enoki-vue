@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@mysten/enoki':
-        specifier: ^0.4.4
-        version: 0.4.4(react@18.3.1)(typescript@5.4.5)
       '@nanostores/vue':
         specifier: ^0.10.0
         version: 0.10.0(nanostores@0.10.3)(vue@3.4.23(typescript@5.4.5))
@@ -18,9 +15,12 @@ importers:
         specifier: '>=3'
         version: 3.4.23(typescript@5.4.5)
     devDependencies:
+      '@mysten/enoki':
+        specifier: ^0.4.4
+        version: 0.4.4(react@18.3.1)(typescript@5.4.5)
       '@vitest/coverage-v8':
         specifier: ^1.5.0
-        version: 1.6.0(vitest@1.6.0(@types/node@20.12.7)(@vitest/ui@1.6.0))
+        version: 1.6.0(vitest@1.6.0)
       '@vitest/ui':
         specifier: ^1.5.0
         version: 1.6.0(vitest@1.6.0)
@@ -39,6 +39,9 @@ importers:
       '@belongnet/enoki-vue':
         specifier: workspace:*
         version: link:..
+      '@mysten/sui':
+        specifier: ^1.15.0
+        version: 1.15.0(typescript@5.4.5)
       '@vueuse/core':
         specifier: ^10.9.0
         version: 10.9.0(vue@3.4.23(typescript@5.4.5))
@@ -52,6 +55,9 @@ importers:
       '@vitejs/plugin-vue':
         specifier: ^5.0.4
         version: 5.0.4(vite@5.2.9(@types/node@20.12.7))(vue@3.4.23(typescript@5.4.5))
+      prettier:
+        specifier: ^3.2.5
+        version: 3.2.5
       typescript:
         specifier: ^5.4.5
         version: 5.4.5
@@ -330,6 +336,10 @@ packages:
 
   '@mysten/sui@1.11.0':
     resolution: {integrity: sha512-+5kSXmoPFrecxUb+fweqqy4eXRpgvv6H51IwRzJbxlolE0AmnM+5IJbLpTlM5RNZEmmocE7p5bUn1OijbuDVkw==}
+    engines: {node: '>=18'}
+
+  '@mysten/sui@1.15.0':
+    resolution: {integrity: sha512-vuyKtb3dY3X6HYzSz/DjoNMQs0zqIWscR2W0lbcYyPOFQZ4lHpzLZszgQor+OGb6uMr7M4COIWKVaIJ82Bbt8w==}
     engines: {node: '>=18'}
 
   '@mysten/zklogin@0.7.21':
@@ -1419,6 +1429,25 @@ snapshots:
       - '@gql.tada/vue-support'
       - typescript
 
+  '@mysten/sui@1.15.0(typescript@5.4.5)':
+    dependencies:
+      '@graphql-typed-document-node/core': 3.2.0(graphql@16.9.0)
+      '@mysten/bcs': 1.1.0
+      '@noble/curves': 1.6.0
+      '@noble/hashes': 1.5.0
+      '@scure/bip32': 1.5.0
+      '@scure/bip39': 1.4.0
+      '@suchipi/femver': 1.0.0
+      bech32: 2.0.0
+      gql.tada: 1.8.9(graphql@16.9.0)(typescript@5.4.5)
+      graphql: 16.9.0
+      tweetnacl: 1.0.3
+      valibot: 0.36.0
+    transitivePeerDependencies:
+      - '@gql.tada/svelte-support'
+      - '@gql.tada/vue-support'
+      - typescript
+
   '@mysten/zklogin@0.7.21(typescript@5.4.5)':
     dependencies:
       '@mysten/bcs': 1.1.0
@@ -1544,7 +1573,7 @@ snapshots:
       vite: 5.2.9(@types/node@20.12.7)
       vue: 3.4.23(typescript@5.4.5)
 
-  '@vitest/coverage-v8@1.6.0(vitest@1.6.0(@types/node@20.12.7)(@vitest/ui@1.6.0))':
+  '@vitest/coverage-v8@1.6.0(vitest@1.6.0)':
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@bcoe/v8-coverage': 0.2.3

@@ -10,12 +10,14 @@
   },
   "dependencies": {
     "@belongnet/enoki-vue": "workspace:*",
+    "@mysten/sui": "^1.15.0",
     "@vueuse/core": "^10.9.0",
     "vue": "^3.4.23"
   },
   "devDependencies": {
     "@types/node": "^20.12.7",
     "@vitejs/plugin-vue": "^5.0.4",
+    "prettier": "^3.2.5",
     "typescript": "^5.4.5",
     "vite": "^5.2.9",
     "vite-plugin-inspect": "^0.8.3",

@@ -1,5 +1,25 @@
 # Changelog
 
+## v0.1.0
+
+[compare changes](https://github.com/belongnet/enoki-vue/compare/v0.0.9...v0.1.0)
+
+### 🩹 Fixes
+
+- **playground:** ⚠️  Move repo to public ([6d7087c](https://github.com/belongnet/enoki-vue/commit/6d7087c))
+- **playground:** Hoist ([469cba7](https://github.com/belongnet/enoki-vue/commit/469cba7))
+- **playground:** Try fix ([7e424fb](https://github.com/belongnet/enoki-vue/commit/7e424fb))
+- **playground:** Split chunks ([3fd610a](https://github.com/belongnet/enoki-vue/commit/3fd610a))
+- Lib tsdoc ([0116b50](https://github.com/belongnet/enoki-vue/commit/0116b50))
+
+#### ⚠️ Breaking Changes
+
+- **playground:** ⚠️  Move repo to public ([6d7087c](https://github.com/belongnet/enoki-vue/commit/6d7087c))
+
+### ❤️ Contributors
+
+- Reslear <reslear@gmail.com>
+
 ## v0.0.9
 
 [compare changes](https://github.com/belongnet/enoki-vue/compare/v0.0.8...v0.0.9)

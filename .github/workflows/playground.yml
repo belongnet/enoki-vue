@@ -9,7 +9,8 @@ on:
 
     paths:
       - 'playground/**'
-      - '.github/workflows/docs-deploy.yml'
+      - '.github/workflows/playground.yml'
+
   workflow_dispatch:
 
 permissions:
@@ -41,7 +42,7 @@ jobs:
       - run: pnpm --filter @belongnet/enoki-vue build
 
       - run: cd playground && pnpm install
-      - run: pnpm build --base /enoki-vue/
+      - run: pnpm --filter playground build --base /enoki-vue/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1

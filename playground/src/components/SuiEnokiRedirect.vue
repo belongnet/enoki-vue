@@ -8,9 +8,9 @@ const suiState = useZkLogin()
 
 const handleSignIn = async () => {
   const baseUrl = import.meta.env.BASE_URL
-  const redirectUrl = `${window.location.origin}/${baseUrl ? baseUrl + '/' : ''}${import.meta.env.BASE_URL}/redirect`
+  const redirectUrl = `${window.location.origin}${baseUrl ? baseUrl : '/'}redirect`
 
-  console.log({ redirectUrl })
+  console.log({ redirectUrl, baseUrl })
 
   const googleSignInUrl = await enokiFlow.createAuthorizationURL({
     provider: 'google',

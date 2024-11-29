@@ -43,6 +43,9 @@ jobs:
 
       - run: cd playground && pnpm install
       - run: pnpm --filter playground build --base /enoki-vue/
+        env:
+          VITE_ENOKI_API_KEY: ${{ secrets.VITE_ENOKI_API_KEY }}
+          VITE_GOOGLE_OAUTH_APP_ID_WEB: ${{ secrets.VITE_GOOGLE_OAUTH_APP_ID_WEB }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1

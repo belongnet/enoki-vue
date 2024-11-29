@@ -1,12 +1,18 @@
 <script setup lang="ts">
 import { useEnokiFlow, useZkLogin } from '@belongnet/enoki-vue'
+import { joinURL } from 'ufo'
+
 const config = useRuntimeConfig()
 const enokiFlow = useEnokiFlow()
 const suiState = useZkLogin()
 
 const handleSignIn = async () => {
   const baseUrl = config.app.baseURL
-  const redirectUrl = `${window.location.origin}${baseUrl ? baseUrl : '/'}redirect`
+  const redirectUrl = joinURL(
+    window.location.origin,
+    baseUrl ? baseUrl : '',
+    '/auth'
+  )
 
   console.log({ redirectUrl, baseUrl })
 

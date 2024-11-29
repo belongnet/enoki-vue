@@ -33,7 +33,11 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {},
+        manualChunks: {
+          '@belongnet/enoki-vue': ['@belongnet/enoki-vue'],
+          '@mysten/enoki': ['@mysten/enoki'],
+          // '@mysten/sui': ['@mysten/sui'],
+        },
       },
     },
   },

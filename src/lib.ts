@@ -1,40 +1,32 @@
-import {
-  ref,
-  shallowRef,
-  onMounted,
-  onBeforeUnmount,
-  watchEffect,
-  type ShallowRef,
-} from 'vue'
-import { EnokiFlow, type EnokiFlowConfig } from '@mysten/enoki'
+import { ref, onMounted, onBeforeUnmount, watchEffect, inject } from 'vue'
 import { useStore } from '@nanostores/vue'
+import { _EnokiFlowKey } from './plugin.js'
 
-const enokiFlow = shallowRef<EnokiFlow | null>(null)
-
-export function useEnokiFlow(config?: EnokiFlowConfig): ShallowRef<EnokiFlow> {
-  if (!enokiFlow.value) {
-    if (!config) {
-      throw new Error('EnokiFlow not initialized, please provide config first')
-    }
-
-    enokiFlow.value = new EnokiFlow(config)
-  }
-
-  return enokiFlow as ShallowRef<EnokiFlow>
+/**
+ * Create a new EnokiFlow instance and provide it to the app.
+ *
+ * @param config - EnokiFlow configuration.
+ * @returns EnokiFlow instance.
+ */
+export function useEnokiFlow() {
+  return inject(_EnokiFlowKey)!
 }
 
 export function useZkLogin() {
-  const flow = useEnokiFlow()
-  return useStore(flow.value.$zkLoginState)
+  const enokiFlow = useEnokiFlow()
+  return useStore(enokiFlow.$zkLoginState)
 }
 
 export function useZkLoginSession() {
-  const flow = useEnokiFlow()
-  return useStore(flow.value.$zkLoginSession).value
+  const enokiFlow = useEnokiFlow()
+  return useStore(enokiFlow.$zkLoginSession).value
 }
 
+/**
+ * Handle auth callback from Enoki.
+ */
 export function useAuthCallback() {
-  const flow = useEnokiFlow()
+  const enokiFlow = useEnokiFlow()
   const state = ref<string | null>(null)
   const handled = ref(false)
 
@@ -53,7 +45,7 @@ export function useAuthCallback() {
   watchEffect(() => {
     if (!hash.value) return
 
-    flow.value
+    enokiFlow
       .handleAuthCallback(hash.value)
       .then((_state) => {
         state.value = _state

@@ -8,6 +8,7 @@
     "strict": true
   },
   "include": [
+    "./typed-router.d.ts",
     "./vite.config.mts"
   ]
 }

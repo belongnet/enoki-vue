@@ -12,22 +12,46 @@
 
 ## Installation
 
-Install dependencies:
+1. Install dependencies:
 
 ```bash
 pnpm add @belongnet/enoki-vue @mysten/enoki
 ```
 
-Get your API key from [Enoki Portal](https://portal.enoki.mystenlabs.com/) and setup your Enoki config:
+2. Get your API key from [Enoki Portal](https://portal.enoki.mystenlabs.com/) and write direct to config or set env `VITE_ENOKI_API_KEY`.
+
+3. Integrate plugin with your Vue App:
+
+```ts
+// src/main.ts
+import { useEnokiFlow } from '@belongnet/enoki-vue'
+
+app.use(EnokiPlugin, {
+  config: {
+    apiKey: import.meta.env.VITE_ENOKI_API_KEY,
+  },
+})
+```
+
+4. Hooks are ready to use in your components or composables:
 
 ```ts
 import { useEnokiFlow } from '@belongnet/enoki-vue'
+const enokiFlow = useEnokiFlow()
 
-// setup enoki config first
-const enokiFlow = useEnokiFlow({
-  apiKey: 'your-api',
-})
+// https://docs.enoki.mystenlabs.com/ts-sdk/examples
+function handleSignIn() {
+  enokiFlow
+    .createAuthorizationURL({
+      // ...
+    })
+    .then((url) => {
+      window.location.href = url
+    })
+}
 ```
+
+See [official documentation](https://docs.enoki.mystenlabs.com) for more details, for complex example see [playground](./playground) folder.
 
 Enjoy!
 
@@ -38,6 +62,7 @@ import {
   useZkLogin,
   useZkLoginSession,
   useAuthCallback,
+  useEnokiFlow,
 } from '@belongnet/enoki-vue'
 ```
 

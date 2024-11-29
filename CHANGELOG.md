@@ -1,5 +1,22 @@
 # Changelog
 
+## v0.1.1
+
+[compare changes](https://github.com/belongnet/enoki-vue/compare/v0.1.0...v0.1.1)
+
+### 🩹 Fixes
+
+- Lock ([f9f790a](https://github.com/belongnet/enoki-vue/commit/f9f790a))
+- **playground:** Envs ([5350e7a](https://github.com/belongnet/enoki-vue/commit/5350e7a))
+
+### 🤖 CI
+
+- Try publish ([7101507](https://github.com/belongnet/enoki-vue/commit/7101507))
+
+### ❤️ Contributors
+
+- Reslear <reslear@gmail.com>
+
 ## v0.1.0
 
 [compare changes](https://github.com/belongnet/enoki-vue/compare/v0.0.9...v0.1.0)

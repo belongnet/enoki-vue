@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.0.9
+
+[compare changes](https://github.com/belongnet/enoki-vue/compare/v0.0.8...v0.0.9)
+
+### 💅 Refactors
+
+- Publish ([85550e3](https://github.com/belongnet/enoki-vue/commit/85550e3))
+
+### ❤️ Contributors
+
+- Reslear <reslear@gmail.com>
+
 ## v0.0.8
 
 [compare changes](https://github.com/belongnet/enoki-vue/compare/v0.0.7...v0.0.8)

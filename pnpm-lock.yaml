@@ -57,6 +57,9 @@ importers:
       nuxt:
         specifier: ^3.14.1592
         version: 3.14.1592(@parcel/watcher@2.5.0)(@types/node@22.10.1)(eslint@9.15.0(jiti@2.4.0))(ioredis@5.4.1)(lightningcss@1.28.2)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.27.4)(terser@5.36.0)(typescript@5.7.2)(vite@5.4.11(@types/node@22.10.1)(lightningcss@1.28.2)(terser@5.36.0))
+      tailwindcss:
+        specifier: 4.0.0-beta.4
+        version: 4.0.0-beta.4
       truncate-eth-address:
         specifier: ^1.0.2
         version: 1.0.2
@@ -4446,6 +4449,9 @@ packages:
 
   tailwindcss@4.0.0-alpha.34:
     resolution: {integrity: sha512-SST1h774z+bVCLTpRz4TYpjJLIcomZH1HBF4OPY1YusONUYqg0/XTq0N++12mNeyu6mK7VbFIkkNtf636yudWQ==}
+
+  tailwindcss@4.0.0-beta.4:
+    resolution: {integrity: sha512-mkjpwMyaHCa3L5HmRjYyY8w8D+7brxwbM7YQxH8QeEFtCURd5fvdHIC9TEpIaL1X49vhl8cuOFY6Nhi6sCsI5w==}
 
   tapable@2.2.1:
     resolution: {integrity: sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==}
@@ -10029,6 +10035,8 @@ snapshots:
       tailwindcss: 4.0.0-alpha.34
 
   tailwindcss@4.0.0-alpha.34: {}
+
+  tailwindcss@4.0.0-beta.4: {}
 
   tapable@2.2.1: {}
 

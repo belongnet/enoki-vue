@@ -40,7 +40,8 @@ jobs:
 
       - run: pnpm --filter @belongnet/enoki-vue build
 
-      - run: pnpm --filter playground build --base /enoki-vue/
+      - run: cd playground && pnpm install
+      - run: pnpm build --base /enoki-vue/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1

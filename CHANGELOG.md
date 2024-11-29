@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.1.2
+
+[compare changes](https://github.com/belongnet/enoki-vue/compare/v0.1.1...v0.1.2)
+
+### 🩹 Fixes
+
+- Ts lib version ([4083dd4](https://github.com/belongnet/enoki-vue/commit/4083dd4))
+
+### ❤️ Contributors
+
+- Reslear <reslear@gmail.com>
+
 ## v0.1.1
 
 [compare changes](https://github.com/belongnet/enoki-vue/compare/v0.1.0...v0.1.1)

@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import { useAuthCallback, useEnokiFlow, useZkLogin } from '@belongnet/enoki-vue'
-
+import { useEnokiFlow, useZkLogin } from '@belongnet/enoki-vue'
+const config = useRuntimeConfig()
 const enokiFlow = useEnokiFlow()
-const { handled } = useAuthCallback()
 const suiState = useZkLogin()
 
 const handleSignIn = async () => {
-  const baseUrl = import.meta.env.BASE_URL
+  const baseUrl = config.app.baseURL
   const redirectUrl = `${window.location.origin}${baseUrl ? baseUrl : '/'}redirect`
 
   console.log({ redirectUrl, baseUrl })
@@ -14,7 +13,7 @@ const handleSignIn = async () => {
   const googleSignInUrl = await enokiFlow.createAuthorizationURL({
     provider: 'google',
     network: 'testnet',
-    clientId: import.meta.env.VITE_GOOGLE_OAUTH_APP_ID_WEB,
+    clientId: config.public.googleClientId,
     redirectUrl,
     extraParams: {
       scope: ['openid', 'email', 'profile'],
@@ -27,12 +26,6 @@ const handleSignIn = async () => {
     window.location.href = googleSignInUrl
   }
 }
-
-watchEffect(() => {
-  if (handled.value) {
-    console.log('handled')
-  }
-})
 </script>
 
 <template>

@@ -2,6 +2,8 @@
 import { useEnokiFlow, useZkLogin } from '@belongnet/enoki-vue'
 import { GoogleSignInButton, type CredentialResponse } from 'vue3-google-signin'
 
+const config = useRuntimeConfig()
+
 const enokiFlow = useEnokiFlow()
 const suiState = useZkLogin()
 const nonce = ref('')
@@ -10,7 +12,7 @@ const generateNonce = async () => {
   const url = await enokiFlow?.createAuthorizationURL({
     provider: 'google',
     network: 'testnet',
-    clientId: import.meta.env.VITE_GOOGLE_OAUTH_APP_ID_WEB,
+    clientId: config.public.googleClientId,
     redirectUrl: '',
     extraParams: {
       scope: ['openid', 'email', 'profile'],

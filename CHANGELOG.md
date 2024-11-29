@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.1.3
+
+
+### 🏡 Chore
+
+- Try workflow ([eb15ebd](https://github.com/belongnet/enoki-vue/commit/eb15ebd))
+
+### ❤️ Contributors
+
+- Reslear <reslear@gmail.com>
+
 ## v0.1.2
 
 [compare changes](https://github.com/belongnet/enoki-vue/compare/v0.1.1...v0.1.2)

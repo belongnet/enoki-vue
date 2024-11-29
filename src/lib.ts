@@ -3,27 +3,46 @@ import { useStore } from '@nanostores/vue'
 import { _EnokiFlowKey } from './plugin.js'
 
 /**
- * Create a new EnokiFlow instance and provide it to the app.
+ * Manages state for Enoki authentication.
  *
- * @param config - EnokiFlow configuration.
  * @returns EnokiFlow instance.
  */
 export function useEnokiFlow() {
   return inject(_EnokiFlowKey)!
 }
 
+/**
+ * Use the current ZkLogin state.
+ */
 export function useZkLogin() {
   const enokiFlow = useEnokiFlow()
   return useStore(enokiFlow.$zkLoginState)
 }
 
+/**
+ * Use the current ZkLogin Session
+ */
 export function useZkLoginSession() {
   const enokiFlow = useEnokiFlow()
   return useStore(enokiFlow.$zkLoginSession).value
 }
 
 /**
- * Handle auth callback from Enoki.
+ * An auth callback to handle redirect after a successful log in
+ *
+ *
+ *  @example
+ *
+ * ```ts
+ * const { handled } = useAuthCallback();
+ *
+ * watchEffect(() => {
+ *   if (handled.value) {
+ *     // redirect to the home page
+ *     router.push('/')
+ *   }
+ * })
+ * ```
  */
 export function useAuthCallback() {
   const enokiFlow = useEnokiFlow()

@@ -7,7 +7,8 @@ const { handled } = useAuthCallback()
 const suiState = useZkLogin()
 
 const handleSignIn = async () => {
-  const redirectUrl = `${window.location.origin}/redirect`
+  const baseUrl = import.meta.env.BASE_URL
+  const redirectUrl = `${window.location.origin}/${baseUrl ? baseUrl + '/' : ''}${import.meta.env.BASE_URL}/redirect`
 
   console.log({ redirectUrl })
 

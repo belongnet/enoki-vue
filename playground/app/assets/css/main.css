@@ -1,0 +1,68 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme {
+  --font-sans: 'Public Sans', sans-serif;
+  --color-violet-50: #f3f0fe;
+  --color-violet-100: #e2d8fc;
+  --color-violet-200: #c5b1f9;
+  --color-violet-300: #9e84f4;
+  --color-violet-400: #7440ee;
+  --color-violet-500: #6329e1;
+  --color-violet-600: #5321c4;
+  --color-violet-700: #441b9e;
+  --color-violet-800: #36167d;
+  --color-violet-900: #29115e;
+  --color-violet-950: #150a33;
+}
+
+body {
+  @apply bg-gray-100 dark:bg-gray-950;
+}
+
+@layer base {
+  h1 {
+    @apply text-2xl;
+  }
+  h2 {
+    @apply text-xl;
+  }
+  h3 {
+    @apply text-lg;
+  }
+  a[href] {
+    @apply text-violet-400 underline;
+  }
+}
+
+
+.app {
+  height: 100vh;
+  width: 100%;
+  display: grid;
+  grid-template-areas:
+    'header'
+    'main'
+    'footer';
+  grid-template-rows: auto 1fr auto;
+
+  > header {
+    grid-area: header;
+    text-align: center;
+  }
+
+  > main {
+    grid-area: main;
+
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+
+  > footer {
+    grid-area: footer;
+
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    text-align: center;
+  }
+}

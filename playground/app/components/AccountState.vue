@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, watchEffect } from 'vue'
 import { useEnokiFlow, useZkLogin } from '@belongnet/enoki-vue'
-import { suiClient } from '../config/enoki'
+import { suiClient } from '~/config/enoki'
 import { MIST_PER_SUI } from '@mysten/sui/utils'
 import truncateEthAddress from 'truncate-eth-address'
 
@@ -53,14 +53,14 @@ watchEffect(() => {
           >
 
           <UButton
-            @click="reloadBalance()"
             variant="ghost"
             size="xs"
             icon="i-lucide:refresh-ccw"
-          ></UButton>
+            @click="reloadBalance()"
+          />
         </div>
 
-        <UButton @click="enokiFlow.logout()" icon="i-lucide:log-out" size="sm"
+        <UButton icon="i-lucide:log-out" size="sm" @click="enokiFlow.logout()"
           >Logout</UButton
         >
       </div>

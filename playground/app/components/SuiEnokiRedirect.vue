@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { watchEffect } from 'vue'
 import { useAuthCallback, useEnokiFlow, useZkLogin } from '@belongnet/enoki-vue'
 
 const enokiFlow = useEnokiFlow()

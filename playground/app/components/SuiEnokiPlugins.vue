@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { useEnokiFlow, useZkLogin } from '@belongnet/enoki-vue'
-
 import { GoogleSignInButton, type CredentialResponse } from 'vue3-google-signin'
 
 const enokiFlow = useEnokiFlow()
@@ -51,7 +49,7 @@ const handleLoginError = () => {
         :nonce="nonce"
         @success="handleLoginSuccess"
         @error="handleLoginError"
-      ></GoogleSignInButton>
+      />
     </template>
   </section>
   <section v-else>

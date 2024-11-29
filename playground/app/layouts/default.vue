@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 
-const items = ref([
+const headerItems = ref([
   {
     icon: 'i-lucide:house',
     to: '/',
@@ -18,13 +18,31 @@ const items = ref([
     to: '/plugins',
   },
 ])
+
+const footerItems = ref([
+  {
+    label: 'cm',
+    slot: 'cm',
+    as: 'div',
+  },
+  {
+    label: '',
+    to: 'https://belong.net/',
+    slot: 'belong',
+  },
+  {
+    icon: 'i-simple-icons-github',
+    to: 'https://github.com/belongnet/enoki-vue',
+    target: '_blank',
+  },
+])
 </script>
 
 <template>
   <div class="app">
     <header class="mt-4">
       <h1>Sui Enoki playground for Vue 3</h1>
-      <UNavigationMenu :items="items" class="justify-center" />
+      <UNavigationMenu :items="headerItems" class="justify-center" />
       <AccountState class="py-2" />
     </header>
 
@@ -33,7 +51,16 @@ const items = ref([
     </UContainer>
 
     <footer>
-      2024 &copy; <a href="https://belong.net/" target="_blank">Belong.net</a>
+      <UNavigationMenu
+        :items="footerItems"
+        class="justify-center"
+        variant="link"
+      >
+        <template #belong> 2024 &copy; Belong.net</template>
+        <template #cm>
+          <ColorModeButton />
+        </template>
+      </UNavigationMenu>
     </footer>
   </div>
 </template>

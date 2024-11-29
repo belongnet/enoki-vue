@@ -66,8 +66,4 @@ watchEffect(() => {
       </div>
     </UCard>
   </section>
-
-  <section v-else>
-    <p>Not logged in</p>
-  </section>
 </template>

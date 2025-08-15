@@ -6,8 +6,8 @@ on:
     branches:
       - main
     paths:
-      - 'playground/**'
-      - '.github/workflows/playground.yml'
+      - "playground/**"
+      - ".github/workflows/playground.yml"
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -20,8 +20,8 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
-          cache: 'pnpm'
+          node-version: "22"
+          cache: "pnpm"
 
       - name: Install dependencies
         run: pnpm install
@@ -38,7 +38,7 @@ jobs:
           NUXT_PUBLIC_GOOGLE_CLIENT_ID: ${{ secrets.VITE_GOOGLE_OAUTH_APP_ID_WEB }}
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ./playground/.output/public
   # Deployment job
@@ -58,4 +58,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4

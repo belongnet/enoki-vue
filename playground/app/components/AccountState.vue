@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, watchEffect } from 'vue'
 import { useEnokiFlow, useZkLogin } from '@belongnet/enoki-vue'
-import { suiClient } from '~/config/enoki'
+import { suiClient } from '~/config/sui-client'
 import { MIST_PER_SUI } from '@mysten/sui/utils'
 import truncateEthAddress from 'truncate-eth-address'
 

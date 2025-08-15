@@ -17,6 +17,11 @@ const headerItems = ref([
     icon: 'i-lucide:box',
     to: '/plugins',
   },
+  {
+    label: 'Wallet',
+    icon: 'i-lucide:wallet',
+    to: '/wallet',
+  },
 ])
 
 const footerItems = ref([
@@ -46,7 +51,7 @@ const footerItems = ref([
       <AccountState class="py-2" />
     </header>
 
-    <UContainer as="main">
+    <UContainer as="main" class="overflow-x-hidden">
       <slot />
     </UContainer>
 

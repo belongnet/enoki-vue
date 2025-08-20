@@ -31,6 +31,11 @@ export default defineNuxtConfig({
     },
   },
 
+  eslint: {
+    config: {
+      stylistic: true,
+    },
+  },
   ui: {
     fonts: false,
   },

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { StepperItem } from '@nuxt/ui'
-import { registerEnokiWallets, type AuthProvider } from '@mysten/enoki';
+import { registerEnokiWallets, type AuthProvider } from '@mysten/enoki'
 import { suiClient } from '~/config/sui-client'
 import { StandardConnect, type WalletAccount } from '@mysten/wallet-standard'
 
@@ -9,7 +9,6 @@ const config = useRuntimeConfig()
 const enokiWallets = shallowRef<ReturnType<typeof registerEnokiWallets>>()
 const activeStep = ref(0)
 const connectedAccounts = shallowRef<WalletAccount[]>()
-
 
 enum Step {
   Initialize,
@@ -35,12 +34,10 @@ const items = computed<StepperItem[]>(() => ([
     description: 'Your wallet is ready to use',
     disabled: !connectedAccounts.value,
     slot: 'connected',
-  }
+  },
 ]))
 
-
 function initializeEnokiWallets() {
-
   if (enokiWallets.value) {
     console.warn('Enoki wallets already initialized')
     return
@@ -62,6 +59,15 @@ function initializeEnokiWallets() {
       //      clientId: 'YOUR_TWITCH_CLIENT_ID',
       //  },
     },
+    customAuthorization: async ({ oauthUrl, provider, network }) => {
+      console.log('customAuthorization', { oauthUrl, provider, network })
+
+      return {
+        hash: '123',
+        search: '123',
+      }
+    },
+
   })
 
   activeStep.value = Step.Connection
@@ -78,7 +84,7 @@ async function connect(provider: AuthProvider) {
   if (result) {
     console.log(result)
 
-    connectedAccounts.value = result.accounts.map((account) => ({
+    connectedAccounts.value = result.accounts.map(account => ({
       address: account.address,
       publicKey: account.publicKey,
       chains: account.chains,
@@ -93,11 +99,9 @@ async function connect(provider: AuthProvider) {
   }
 }
 
-
 onMounted(() => {
   initializeEnokiWallets()
 })
-
 </script>
 
 <template>
@@ -107,41 +111,65 @@ onMounted(() => {
       Use <code>registerEnokiWallets</code>, instead deprecated <code>EnokiFlow</code>.
     </p>
 
-
-    <UStepper :items="items" size="sm" class="w-full p-4" v-model="activeStep">
-
-
+    <UStepper
+      v-model="activeStep"
+      :items="items"
+      size="sm"
+      class="w-full p-4"
+    >
       <template #initialize>
         <p class="pb-2">
           Initialize Enoki Wallets
         </p>
-          <UButton @click="initializeEnokiWallets">Initialize Enoki Wallets</UButton>
-
+        <UButton @click="initializeEnokiWallets">
+          Initialize Enoki Wallets
+        </UButton>
       </template>
 
       <template #connection>
-        <p class="pb-2">Connection</p>
+        <p class="pb-2">
+          Connection
+        </p>
 
-          <div class="flex flex-col gap-2">
-            <template v-for="(wallet, provider) in enokiWallets?.wallets" :key="provider">
-              <div v-if="wallet">
-                <UButton @click="connect(provider)">Connect {{ provider }}</UButton>
-              </div>
-            </template>
-          </div>
+        <div class="flex flex-col gap-2">
+          <template
+            v-for="(wallet, provider) in enokiWallets?.wallets"
+            :key="provider"
+          >
+            <div v-if="wallet">
+              <UButton @click="connect(provider)">
+                Connect {{ provider }}
+              </UButton>
+            </div>
+          </template>
+        </div>
       </template>
 
       <template #connected>
-        <p class="pb-2">Connected</p>
+        <p class="pb-2">
+          Connected
+        </p>
 
-        <div class="flex flex-col gap-2" v-if="connectedAccounts?.length">
-
-          <template v-for="(wallet, i) in connectedAccounts" :key="i">
+        <div
+          v-if="connectedAccounts?.length"
+          class="flex flex-col gap-2"
+        >
+          <template
+            v-for="(wallet, i) in connectedAccounts"
+            :key="i"
+          >
             <div v-if="wallet">
               <ul class="flex flex-col gap-2">
-                <li v-for="(value, key, j) in wallet" :key="key + j">
+                <li
+                  v-for="(value, key, j) in wallet"
+                  :key="key + j"
+                >
                   <template v-if="key === 'icon'">
-                    <img :src="value as string" alt="Wallet Logo" class="w-10 h-10">
+                    <img
+                      :src="value as string"
+                      alt="Wallet Logo"
+                      class="w-10 h-10"
+                    >
                   </template>
                   <template v-else>
                     <span class="font-bold">{{ key }}:</span>
@@ -149,12 +177,10 @@ onMounted(() => {
                   </template>
                 </li>
               </ul>
-
             </div>
           </template>
         </div>
       </template>
-
     </UStepper>
   </section>
 </template>

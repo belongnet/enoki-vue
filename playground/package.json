@@ -10,15 +10,16 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
-    "lint:fix": "eslint --fix ."
+    "lint:fix": "eslint --fix .",
+    "clean": "rm -rf .nuxt node_modules/.cache"
   },
   "dependencies": {
     "@belongnet/enoki-vue": "workspace:*",
     "@iconify-json/logos": "^1.2.9",
-    "@iconify-json/lucide": "^1.2.62",
-    "@mysten/sui": "1.37.2",
+    "@iconify-json/lucide": "^1.2.63",
+    "@mysten/sui": "1.37.3",
     "@nuxt/ui": "3.3.2",
-    "@vueuse/core": "^13.6.0",
+    "@vueuse/core": "^13.7.0",
     "nuxt": "^4.0.3",
     "tailwindcss": "4.1.12",
     "truncate-eth-address": "^1.0.2",
@@ -26,7 +27,7 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "2.6.2",
-    "@nuxt/eslint": "^1.8.0",
+    "@nuxt/eslint": "^1.9.0",
     "eslint": "^9.33.0",
     "prettier": "^3.6.2",
     "typescript": "^5.9.2"

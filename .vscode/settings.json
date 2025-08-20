@@ -1,5 +1,9 @@
 {
   "cSpell.words": [
     "enoki"
-  ]
+  ],
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  }
 }

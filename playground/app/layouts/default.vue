@@ -6,21 +6,20 @@ const headerItems = ref([
     icon: 'i-lucide:house',
     to: '/',
   },
-
-  {
-    label: 'Redirect',
-    icon: 'i-lucide:send-to-back',
-    to: '/redirect',
-  },
-  {
-    label: 'Plugins',
-    icon: 'i-lucide:box',
-    to: '/plugins',
-  },
   {
     label: 'Wallet',
     icon: 'i-lucide:wallet',
     to: '/wallet',
+  },
+  {
+    label: 'Redirect (deprecated)',
+    icon: 'i-lucide:send-to-back',
+    to: '/redirect',
+  },
+  {
+    label: 'Plugins (deprecated)',
+    icon: 'i-lucide:box',
+    to: '/plugins',
   },
 ])
 
@@ -47,11 +46,17 @@ const footerItems = ref([
   <div class="app">
     <header class="mt-4">
       <h1>Sui Enoki playground for Vue 3</h1>
-      <UNavigationMenu :items="headerItems" class="justify-center" />
+      <UNavigationMenu
+        :items="headerItems"
+        class="justify-center"
+      />
       <AccountState class="py-2" />
     </header>
 
-    <UContainer as="main" class="overflow-x-hidden">
+    <UContainer
+      as="main"
+      class="overflow-x-hidden"
+    >
       <slot />
     </UContainer>
 
@@ -61,7 +66,9 @@ const footerItems = ref([
         class="justify-center"
         variant="link"
       >
-        <template #belong> 2024 &copy; Belong.net</template>
+        <template #belong>
+          2024 &copy; Belong.net
+        </template>
         <template #cm>
           <ColorModeButton />
         </template>

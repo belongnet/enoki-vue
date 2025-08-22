@@ -2,7 +2,8 @@
 import type { StepperItem } from '@nuxt/ui'
 import { registerEnokiWallets, type AuthProvider } from '@mysten/enoki'
 import { suiClient } from '~/config/sui-client'
-import { StandardConnect, type WalletAccount } from '@mysten/wallet-standard'
+import type { WalletAccount } from '@mysten/wallet-standard'
+import { GoogleSignInButton, type CredentialResponse } from 'vue3-google-signin'
 
 const config = useRuntimeConfig()
 
@@ -37,7 +38,9 @@ const items = computed<StepperItem[]>(() => ([
   },
 ]))
 
-function initializeEnokiWallets() {
+const googleNonce = ref('')
+
+async function initializeEnokiWallets() {
   if (enokiWallets.value) {
     console.warn('Enoki wallets already initialized')
     return
@@ -59,19 +62,42 @@ function initializeEnokiWallets() {
       //      clientId: 'YOUR_TWITCH_CLIENT_ID',
       //  },
     },
-    customAuthorization: async ({ oauthUrl, provider, network }) => {
-      console.log('customAuthorization', { oauthUrl, provider, network })
+    // customAuthorization: async ({ oauthUrl, provider, network }) => {
+    //   console.log('customAuthorization', { oauthUrl, provider, network })
 
-      return {
-        hash: '123',
-        search: '123',
-      }
-    },
+    //   if (provider === 'google') {
+    //     const searchParams = new URLSearchParams(oauthUrl)
+    //     const nonce_ = searchParams.get('nonce')
+
+    //     if (nonce_) {
+    //       googleNonce.value = nonce_
+    //     }
+    //   }
+
+    //   // start login flow
+
+    //   return {
+    //     hash: '123',
+    //     search: '123',
+    //   }
+    // },
 
   })
 
-  activeStep.value = Step.Connection
+  await nextTick()
+
+  await getAccounts()
+
+  if (connectedAccounts.value?.length) {
+    activeStep.value = Step.Connected
+  }
+  else {
+    activeStep.value = Step.Connection
+  }
 }
+
+const sessionContext = shallowRef()
+const authorizationUrl = ref('')
 
 async function connect(provider: AuthProvider) {
   if (!enokiWallets.value) {
@@ -79,24 +105,78 @@ async function connect(provider: AuthProvider) {
     return
   }
 
-  const result = await enokiWallets.value.wallets[provider]?.features[StandardConnect].connect()
+  const result = await enokiWallets.value.wallets[provider]?.features['standard:connect'].connect({
+    disablePopup: true,
+  })
 
-  if (result) {
-    console.log(result)
+  console.log('result', result)
 
-    connectedAccounts.value = result.accounts.map(account => ({
-      address: account.address,
-      publicKey: account.publicKey,
-      chains: account.chains,
-      features: account.features,
-      label: account.label,
-      icon: account.icon,
-    }))
+  if (result && 'authorizationUrl' in result) {
+    sessionContext.value = result.sessionContext
 
-    activeStep.value = Step.Connected
+    // handle auth
+    authorizationUrl.value = result.authorizationUrl
 
-    console.log(connectedAccounts.value)
+    const url = new URL(result.authorizationUrl)
+
+    console.log('url', Object.fromEntries(url.searchParams.entries()))
+
+    const nonce_ = url.searchParams.get('nonce')
+
+    if (nonce_) {
+      googleNonce.value = nonce_
+    }
+
+    // or like
+    // window.open(result.authorizationUrl, '_blank')
   }
+}
+
+async function getAccounts() {
+  await new Promise(resolve => setTimeout(resolve, 1000))
+
+  const result = enokiWallets.value?.wallets.google?.accounts
+
+  const accounts = result?.map(account => ({
+    address: account.address,
+    publicKey: account.publicKey,
+    chains: account.chains,
+    features: account.features,
+    label: account.label,
+    icon: account.icon,
+  }))
+
+  connectedAccounts.value = accounts
+
+  return accounts
+}
+
+async function handleAuthCallback(response: CredentialResponse) {
+  console.log('handleAuthCallback', response)
+
+  try {
+  // not async
+    await enokiWallets.value?.wallets['google']?.features['enoki:handleAuthCallback'].handleAuthCallback({
+      hash: 'id_token=' + response.credential,
+      search: '',
+      sessionContext: sessionContext.value,
+    })
+  }
+  catch (error) {
+    console.error('handleAuthCallback error', error)
+  }
+
+  getAccounts()
+
+  activeStep.value = Step.Connected
+}
+
+function disconnect() {
+  enokiWallets.value?.wallets.google?.features['standard:disconnect'].disconnect()
+
+  connectedAccounts.value = []
+
+  activeStep.value = Step.Connection
 }
 
 onMounted(() => {
@@ -138,8 +218,17 @@ onMounted(() => {
           >
             <div v-if="wallet">
               <UButton @click="connect(provider)">
-                Connect {{ provider }}
+                Generate nonce {{ provider }}
               </UButton>
+
+              <p>nonce: {{ googleNonce }}</p>
+              <template v-if="googleNonce && provider === 'google'">
+                <GoogleSignInButton
+                  :nonce="googleNonce"
+                  @success="handleAuthCallback"
+                  @error="console.error('Google sign in error', $event)"
+                />
+              </template>
             </div>
           </template>
         </div>
@@ -177,6 +266,9 @@ onMounted(() => {
                   </template>
                 </li>
               </ul>
+              <UButton @click="disconnect">
+                Disconnect
+              </UButton>
             </div>
           </template>
         </div>

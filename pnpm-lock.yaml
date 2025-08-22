@@ -6,7 +6,7 @@ settings:
 
 patchedDependencies:
   '@mysten/enoki':
-    hash: ibzj474tycvbubmh5it5ivxu2y
+    hash: 4s4ksqezxt5tnzri53svkhe6xm
     path: patches/@mysten__enoki.patch
 
 importers:
@@ -19,7 +19,7 @@ importers:
     devDependencies:
       '@mysten/enoki':
         specifier: ^0.11.7
-        version: 0.11.7(patch_hash=ibzj474tycvbubmh5it5ivxu2y)(react@18.3.1)(typescript@5.6.2)
+        version: 0.11.7(patch_hash=4s4ksqezxt5tnzri53svkhe6xm)(react@18.3.1)(typescript@5.6.2)
       '@vitest/coverage-v8':
         specifier: ^1.5.0
         version: 1.6.0(vitest@1.6.1(@types/node@22.10.1)(@vitest/ui@1.6.0)(lightningcss@1.30.1)(terser@5.36.0))
@@ -7430,7 +7430,7 @@ snapshots:
       '@mysten/utils': 0.1.1
       '@scure/base': 1.2.6
 
-  '@mysten/enoki@0.11.7(patch_hash=ibzj474tycvbubmh5it5ivxu2y)(react@18.3.1)(typescript@5.6.2)':
+  '@mysten/enoki@0.11.7(patch_hash=4s4ksqezxt5tnzri53svkhe6xm)(react@18.3.1)(typescript@5.6.2)':
     dependencies:
       '@mysten/signers': 0.3.6(typescript@5.6.2)
       '@mysten/sui': 1.37.3(typescript@5.6.2)

@@ -11,16 +11,16 @@ const headerItems = ref([
     icon: 'i-lucide:wallet',
     to: '/wallet',
   },
-  {
-    label: 'Redirect (deprecated)',
-    icon: 'i-lucide:send-to-back',
-    to: '/redirect',
-  },
-  {
-    label: 'Plugins (deprecated)',
-    icon: 'i-lucide:box',
-    to: '/plugins',
-  },
+  // {
+  //   label: 'Redirect (deprecated)',
+  //   icon: 'i-lucide:send-to-back',
+  //   to: '/redirect',
+  // },
+  // {
+  //   label: 'Plugins (deprecated)',
+  //   icon: 'i-lucide:box',
+  //   to: '/plugins',
+  // },
 ])
 
 const footerItems = ref([

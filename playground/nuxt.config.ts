@@ -2,27 +2,31 @@ import { resolve } from 'node:path'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  modules: ['@nuxt/ui', '@nuxt/eslint'],
   ssr: false,
+
+  devtools: { enabled: true },
 
   app: {
     baseURL: '/enoki-vue/',
   },
-
-  devtools: { enabled: true },
-  modules: ['@nuxt/ui', '@nuxt/eslint'],
   css: ['~/assets/css/main.css'],
-
-  future: {
-    compatibilityVersion: 4,
+  ui: {
+    fonts: false,
   },
-
-  compatibilityDate: '2024-11-27',
   runtimeConfig: {
     public: {
       googleClientId: '',
       enokiApiKey: '',
     },
   },
+
+  future: {
+    compatibilityVersion: 4,
+  },
+
+  compatibilityDate: '2024-11-27',
+
   vite: {
     resolve: {
       alias: {
@@ -35,8 +39,5 @@ export default defineNuxtConfig({
     config: {
       stylistic: true,
     },
-  },
-  ui: {
-    fonts: false,
   },
 })
